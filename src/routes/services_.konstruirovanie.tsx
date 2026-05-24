@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CTAButtons } from "@/components/Layout";
 import { ServiceDetail } from "@/components/ServiceDetail";
 
 export const Route = createFileRoute("/services_/konstruirovanie")({
