@@ -61,8 +61,8 @@ export function TZModal({ open, onClose }: { open: boolean; onClose: () => void 
           <input required type="checkbox" className="mt-0.5 accent-[var(--copper)]" />
           <span>Соглашаюсь с <span className="text-primary">политикой конфиденциальности</span> и на обработку персональных данных.</span>
         </label>
-        <button disabled={state !== "idle"} className="w-full btn-copper py-4 rounded-xl font-medium disabled:opacity-70">
-          {state === "idle" ? "Отправить форму" : state === "sending" ? "Отправка…" : "Отправлено ✓"}
+        <button disabled={state === "sending"} className="w-full btn-copper py-4 rounded-xl font-medium disabled:opacity-70">
+          {state === "idle" ? "Отправить форму" : state === "sending" ? "Отправка…" : state === "sent" ? "Отправлено ✓" : "Ошибка, попробуйте ещё раз"}
         </button>
       </form>
     </Modal>
