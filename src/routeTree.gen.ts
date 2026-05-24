@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesProizvodstvoRouteImport } from './routes/services_.proizvodstvo'
 import { Route as ServicesKonstruirovanieRouteImport } from './routes/services_.konstruirovanie'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesProizvodstvoRoute = ServicesProizvodstvoRouteImport.update({
+  id: '/services_/proizvodstvo',
+  path: '/services/proizvodstvo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesKonstruirovanieRoute = ServicesKonstruirovanieRouteImport.update({
   id: '/services_/konstruirovanie',
   path: '/services/konstruirovanie',
@@ -33,30 +39,43 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/services/konstruirovanie': typeof ServicesKonstruirovanieRoute
+  '/services/proizvodstvo': typeof ServicesProizvodstvoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/services/konstruirovanie': typeof ServicesKonstruirovanieRoute
+  '/services/proizvodstvo': typeof ServicesProizvodstvoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/services_/konstruirovanie': typeof ServicesKonstruirovanieRoute
+  '/services_/proizvodstvo': typeof ServicesProizvodstvoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services' | '/services/konstruirovanie'
+  fullPaths:
+    | '/'
+    | '/services'
+    | '/services/konstruirovanie'
+    | '/services/proizvodstvo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services' | '/services/konstruirovanie'
-  id: '__root__' | '/' | '/services' | '/services_/konstruirovanie'
+  to: '/' | '/services' | '/services/konstruirovanie' | '/services/proizvodstvo'
+  id:
+    | '__root__'
+    | '/'
+    | '/services'
+    | '/services_/konstruirovanie'
+    | '/services_/proizvodstvo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ServicesRoute: typeof ServicesRoute
   ServicesKonstruirovanieRoute: typeof ServicesKonstruirovanieRoute
+  ServicesProizvodstvoRoute: typeof ServicesProizvodstvoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +94,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services_/proizvodstvo': {
+      id: '/services_/proizvodstvo'
+      path: '/services/proizvodstvo'
+      fullPath: '/services/proizvodstvo'
+      preLoaderRoute: typeof ServicesProizvodstvoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services_/konstruirovanie': {
       id: '/services_/konstruirovanie'
       path: '/services/konstruirovanie'
@@ -89,7 +115,18 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ServicesRoute: ServicesRoute,
   ServicesKonstruirovanieRoute: ServicesKonstruirovanieRoute,
+  ServicesProizvodstvoRoute: ServicesProizvodstvoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
