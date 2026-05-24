@@ -39,6 +39,3 @@ function Page() {
     />
   );
 }
-
-// Re-export for component file
-export { CTAButtons };
