@@ -31,16 +31,27 @@ export function Modal({ open, onClose, title, children, wide = false }: { open: 
 }
 
 export function useSubmit() {
-  const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   return {
     state,
     submit: async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const form = e.target as HTMLFormElement;
       setState("sending");
-      await new Promise(r => setTimeout(r, 800));
-      setState("sent");
-      setTimeout(() => setState("idle"), 3500);
-      (e.target as HTMLFormElement).reset();
+      try {
+        const res = await fetch("https://formspree.io/f/mykvdylk", {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        if (!res.ok) throw new Error("Failed");
+        setState("sent");
+        form.reset();
+        setTimeout(() => setState("idle"), 4000);
+      } catch {
+        setState("error");
+        setTimeout(() => setState("idle"), 4000);
+      }
     },
   };
 }

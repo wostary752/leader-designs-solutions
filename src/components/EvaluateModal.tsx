@@ -8,6 +8,8 @@ export function EvaluateModal({ open, onClose }: { open: boolean; onClose: () =>
   return (
     <Modal open={open} onClose={onClose} title="Оставьте заявку и мы свяжемся с вами">
       <form onSubmit={submit} className="space-y-3">
+        <input type="hidden" name="_subject" value="Заявка: Оценить задачу — КБ Лидер" />
+        <input type="hidden" name="form_type" value="Оценить задачу" />
         <input required name="name" placeholder="Имя" className={fieldClass} />
         <input required type="tel" name="phone" placeholder="+7 (___) ___-__-__" className={fieldClass} />
         <input required type="email" name="email" placeholder="Почта" className={fieldClass} />
@@ -17,10 +19,10 @@ export function EvaluateModal({ open, onClose }: { open: boolean; onClose: () =>
         </label>
         <label className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-border cursor-pointer hover:border-primary hover:text-primary transition-colors text-sm">
           <Paperclip className="size-4" /> Прикрепите файл
-          <input type="file" className="hidden" />
+          <input type="file" name="attachment" className="hidden" />
         </label>
-        <button disabled={state !== "idle"} className="w-full btn-copper py-3.5 rounded-xl font-medium disabled:opacity-70">
-          {state === "idle" ? "Отправить" : state === "sending" ? "Отправка…" : "Отправлено ✓"}
+        <button disabled={state === "sending"} className="w-full btn-copper py-3.5 rounded-xl font-medium disabled:opacity-70">
+          {state === "idle" ? "Отправить" : state === "sending" ? "Отправка…" : state === "sent" ? "Отправлено ✓" : "Ошибка, попробуйте ещё раз"}
         </button>
       </form>
     </Modal>

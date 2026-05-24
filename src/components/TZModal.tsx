@@ -22,6 +22,8 @@ export function TZModal({ open, onClose }: { open: boolean; onClose: () => void 
     <Modal open={open} onClose={onClose} title="Составить техническое задание" wide>
       <p className="text-sm text-muted-foreground -mt-3 mb-6">Заполните поля как можно подробнее — это поможет нам быстро и точно оценить проект.</p>
       <form onSubmit={submit} className="space-y-5">
+        <input type="hidden" name="_subject" value="Заявка: Техническое задание — КБ Лидер" />
+        <input type="hidden" name="form_type" value="Составить ТЗ" />
         <div className="grid sm:grid-cols-3 gap-4">
           <Field label="Наименование изделия"><input name="name" className={fieldClass} placeholder="Наименование изделия" /></Field>
           <Field label="Назначение изделия"><input name="purpose" className={fieldClass} placeholder="Назначение изделия" /></Field>
@@ -59,8 +61,8 @@ export function TZModal({ open, onClose }: { open: boolean; onClose: () => void 
           <input required type="checkbox" className="mt-0.5 accent-[var(--copper)]" />
           <span>Соглашаюсь с <span className="text-primary">политикой конфиденциальности</span> и на обработку персональных данных.</span>
         </label>
-        <button disabled={state !== "idle"} className="w-full btn-copper py-4 rounded-xl font-medium disabled:opacity-70">
-          {state === "idle" ? "Отправить форму" : state === "sending" ? "Отправка…" : "Отправлено ✓"}
+        <button disabled={state === "sending"} className="w-full btn-copper py-4 rounded-xl font-medium disabled:opacity-70">
+          {state === "idle" ? "Отправить форму" : state === "sending" ? "Отправка…" : state === "sent" ? "Отправлено ✓" : "Ошибка, попробуйте ещё раз"}
         </button>
       </form>
     </Modal>
