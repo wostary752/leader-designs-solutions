@@ -1,13 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CTAButtons } from "@/components/Layout";
-import { ArrowUpRight } from "lucide-react";
+import img1 from "@/assets/projects/01-gorelka-reaktor.png";
+import img2 from "@/assets/projects/02-mazutnaya-gorelka.png";
+import img3 from "@/assets/projects/03-predskrubber.png";
+import img4 from "@/assets/projects/04-podogrevatel.png";
+import img5 from "@/assets/projects/05-podogrevatel.png";
+import img6 from "@/assets/projects/06-predskrubber.png";
+import img7 from "@/assets/projects/07-pech.png";
+import img8 from "@/assets/projects/08-fakelnaya-gorelka.png";
+import img9 from "@/assets/projects/09-kislotnyy-bak.png";
 
 export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
   head: () => ({
     meta: [
       { title: "Проекты — КБ Лидер" },
-      { name: "description", content: "Более 250 реализованных проектов для промышленности, медицины, оборонки и потребительского рынка." },
+      { name: "description", content: "Более 250 реализованных проектов: горелки, реакторы, скрубберы, подогреватели, печи и промышленное оборудование." },
       { property: "og:title", content: "Проекты — КБ Лидер" },
       { property: "og:description", content: "Более 250 завершённых инженерных проектов." },
     ],
@@ -15,15 +23,22 @@ export const Route = createFileRoute("/projects")({
 });
 
 const projects = [
-  { tag: "Промышленность", title: "Линия упаковки молочной продукции", desc: "Разработка узлов и сборочных единиц автоматической линии. Полный комплект КД, шеф-монтаж." },
-  { tag: "Медицина", title: "Корпус аппарата УЗИ-диагностики", desc: "Промышленный дизайн, конструкция, прототипы методом SLA, подготовка пресс-форм." },
-  { tag: "Энергетика", title: "Каркас распределительного шкафа", desc: "Сварная конструкция из листового металла. Расчёт на устойчивость, изготовление серии 200 шт." },
-  { tag: "Робототехника", title: "Манипулятор для склада", desc: "Кинематическая схема, прочностные расчёты МКЭ, разработка приводов и редукторов." },
-  { tag: "Потребрынок", title: "Кофемашина капсульного типа", desc: "Реверс-инжиниринг по образцу, локализация производства, доработка узлов под РФ." },
-  { tag: "Оборонка", title: "Корпус БЛА-разведчика", desc: "Аэродинамический расчёт, композитный корпус, изготовление мастер-моделей." },
-  { tag: "Авиация", title: "Кронштейн крепления оборудования", desc: "Топологическая оптимизация, снижение массы на 38% при сохранении ресурса." },
-  { tag: "Транспорт", title: "Подножка электробуса", desc: "Сварная металлоконструкция, расчёт на динамические нагрузки, испытания на стенде." },
-  { tag: "Нефтегаз", title: "Запорная арматура DN200", desc: "Разработка КД, тепловой и прочностной расчёт, изготовление опытного образца." },
+  { tag: "Реактор", title: "Горелка-реактор с технической площадкой", image: img1 },
+  { tag: "Горелка", title: "Мазутная горелка", image: img2 },
+  { tag: "Газоочистка", title: "Предскруббер", image: img3 },
+  { tag: "Теплообмен", title: "Подогреватель", image: img4 },
+  { tag: "Теплообмен", title: "Подогреватель", image: img5 },
+  { tag: "Газоочистка", title: "Предскруббер", image: img6 },
+  { tag: "Печь", title: "Печь", image: img7 },
+  { tag: "Горелка", title: "Факельная горелка", image: img8 },
+  { tag: "Ёмкости", title: "Кислотный бак", image: img9 },
+];
+
+const scope = [
+  "Разработка узлов и сборочных единиц",
+  "Полный комплект КД",
+  "Прочностные и тепловые расчёты",
+  "Шеф-монтаж и авторский надзор",
 ];
 
 function ProjectsPage() {
@@ -35,23 +50,26 @@ function ProjectsPage() {
           <h1 className="font-display text-5xl sm:text-6xl font-bold uppercase">Более <span className="text-gradient">250</span> проектов</h1>
           <p className="text-muted-foreground max-w-md">Каждый проект — это закрытая задача клиента: от концепта до серийного образца. Показываем избранные кейсы.</p>
         </div>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {scope.map((s) => (
+            <span key={s} className="text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-border text-muted-foreground bg-secondary/30">
+              {s}
+            </span>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((p, i) => (
-          <article key={i} className="group glass-card rounded-2xl p-7 hover:border-primary/40 transition-colors flex flex-col">
-            <div className="flex items-center justify-between mb-6">
+          <article key={i} className="glass-card rounded-2xl p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-5">
               <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-border text-muted-foreground">{p.tag}</span>
               <span className="font-display text-sm text-primary/60">№ {String(i + 1).padStart(3, "0")}</span>
             </div>
-            <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-secondary to-background border border-border mb-5 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,oklch(0.72_0.16_52/0.2),transparent_60%)]" />
-              <div className="absolute bottom-3 right-3 size-10 rounded-full border border-border bg-background/60 backdrop-blur flex items-center justify-center group-hover:border-primary group-hover:text-primary transition-colors">
-                <ArrowUpRight className="size-4" />
-              </div>
+            <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-secondary to-background border border-border mb-5 relative overflow-hidden flex items-center justify-center">
+              <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-contain p-2" />
             </div>
-            <h3 className="font-display text-lg font-bold mb-2">{p.title}</h3>
-            <p className="text-sm text-muted-foreground">{p.desc}</p>
+            <h3 className="font-display text-lg font-bold">{p.title}</h3>
           </article>
         ))}
       </section>
