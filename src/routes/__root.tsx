@@ -73,14 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "КБ Лидер — Конструкторское бюро полного цикла" },
+      { name: "description", content: "Конструирование, производство, инженерные расчёты и дизайн. Более 250 реализованных проектов. Санкт-Петербург." },
+      { property: "og:title", content: "КБ Лидер — Конструкторское бюро" },
+      { property: "og:description", content: "Инженерные решения полного цикла: от 3D-модели до серийного производства." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
