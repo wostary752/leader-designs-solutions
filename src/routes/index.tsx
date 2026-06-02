@@ -8,8 +8,59 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "КБ Лидер — Конструкторское бюро · Более 250 проектов" },
-      { name: "description", content: "Полный цикл инженерных услуг: конструирование, производство, расчёты, дизайн. Более 250 реализованных проектов." },
+      { title: "КБ Лидер — Конструкторское бюро в СПб · 250+ проектов" },
+      { name: "description", content: "Конструкторское бюро КБ Лидер: разработка КД, 3D-моделирование, прочностные и тепловые расчёты, производство и промышленный дизайн. 250+ реализованных проектов. Санкт-Петербург." },
+      { name: "keywords", content: "конструкторское бюро СПб, КБ Лидер, разработка КД, 3D моделирование, инженерные расчёты, МКЭ, CFD, реверс-инжиниринг, металлоконструкции, 3D печать, промышленный дизайн, ЕСКД, ГОСТ, проектирование оборудования, нестандартное оборудование" },
+      { property: "og:title", content: "КБ Лидер — Конструкторское бюро полного цикла" },
+      { property: "og:description", content: "Конструирование, расчёты, производство, дизайн. Более 250 реализованных проектов." },
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "КБ Лидер",
+          description: "Конструкторское бюро полного цикла в Санкт-Петербурге: конструирование, расчёты, производство, дизайн.",
+          telephone: "+7-921-583-23-47",
+          email: "kb-leader@mail.ru",
+          priceRange: "$$",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Пулковское ш., д. 80 литер А",
+            addressLocality: "Санкт-Петербург",
+            postalCode: "196140",
+            addressCountry: "RU",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: 59.8029, longitude: 30.2678 },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "47" },
+          makesOffer: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Конструирование и разработка КД" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Производство и металлообработка" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Инженерные расчёты МКЭ и CFD" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Промышленный дизайн" } },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "Сколько стоят инженерные услуги?", acceptedAnswer: { "@type": "Answer", text: "Стоимость зависит от сложности и сроков. После знакомства с задачей мы готовим коммерческое предложение в течение 1–2 рабочих дней." } },
+            { "@type": "Question", name: "Можно ли заказать выполнение чертежей по эскизу или фото?", acceptedAnswer: { "@type": "Answer", text: "Да. Мы регулярно работаем по эскизам, фото и описаниям, восстанавливая полную конструкторскую документацию по ГОСТ и ЕСКД." } },
+            { "@type": "Question", name: "Делаете ли вы 3D моделирование для производства?", acceptedAnswer: { "@type": "Answer", text: "Да. Готовим параметрические модели и сборки, пригодные для ЧПУ-обработки, 3D-печати и литья." } },
+            { "@type": "Question", name: "Работаете ли вы по ГОСТ и ЕСКД?", acceptedAnswer: { "@type": "Answer", text: "Все документы оформляем по действующим стандартам ГОСТ и ЕСКД, при необходимости — по СТО заказчика." } },
+            { "@type": "Question", name: "Подписываете ли вы NDA?", acceptedAnswer: { "@type": "Answer", text: "Да. При работе с промышленными проектами подписываем соглашение о конфиденциальности и работаем по договору." } },
+            { "@type": "Question", name: "В какие сроки выполняются работы?", acceptedAnswer: { "@type": "Answer", text: "Типовые задачи — от 3–5 рабочих дней. Сложные проекты планируем по этапам со сдачей промежуточных результатов." } },
+            { "@type": "Question", name: "Работаете ли вы с регионами?", acceptedAnswer: { "@type": "Answer", text: "Да, работаем по всей России и СНГ. Все коммуникации онлайн, документы в электронном виде или по почте." } },
+          ],
+        }),
+      },
     ],
   }),
 });

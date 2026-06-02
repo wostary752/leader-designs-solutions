@@ -5,10 +5,39 @@ export const Route = createFileRoute("/services_/proizvodstvo")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Производство — КБ Лидер" },
-      { name: "description", content: "3D-печать (FDM, SLA, SLS), изготовление металлоконструкций, мехобработка и сборка." },
+      { title: "Производство и металлообработка — КБ Лидер" },
+      { name: "description", content: "Производство деталей и изделий: 3D-печать FDM/SLA/SLS, изготовление металлоконструкций, ЧПУ-фрезеровка, токарная обработка, сварка, сборка и испытания." },
+      { name: "keywords", content: "производство, металлоконструкции, 3D печать, FDM, SLA, SLS, ЧПУ фрезеровка, токарная обработка, лазерная резка, сварка MIG TIG, прототипирование, мелкосерийное производство" },
       { property: "og:title", content: "Производство — КБ Лидер" },
       { property: "og:description", content: "Прототипы и серийные изделия из пластика и металла." },
+      { property: "og:url", content: "/services/proizvodstvo" },
+      { property: "og:type", content: "article" },
+    ],
+    links: [{ rel: "canonical", href: "/services/proizvodstvo" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Производство и металлообработка",
+          provider: { "@type": "Organization", name: "КБ Лидер" },
+          areaServed: "RU",
+          description: "3D-печать, изготовление металлоконструкций, ЧПУ-обработка, сборка.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Услуги", item: "/services" },
+            { "@type": "ListItem", position: 3, name: "Производство", item: "/services/proizvodstvo" },
+          ],
+        }),
+      },
     ],
   }),
 });

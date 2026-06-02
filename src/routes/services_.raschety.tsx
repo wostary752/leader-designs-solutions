@@ -5,10 +5,39 @@ export const Route = createFileRoute("/services_/raschety")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Инженерные расчёты — КБ Лидер" },
-      { name: "description", content: "Прочностной анализ МКЭ, тепловые и аэродинамические расчёты, кинематика и динамика." },
+      { title: "Инженерные расчёты МКЭ и CFD — КБ Лидер" },
+      { name: "description", content: "Прочностной анализ методом конечных элементов (МКЭ), тепловые и аэродинамические расчёты (CFD), кинематика и динамика механизмов. ANSYS, OpenFOAM." },
+      { name: "keywords", content: "инженерные расчёты, МКЭ, метод конечных элементов, CFD расчёт, ANSYS Fluent, OpenFOAM, прочностной анализ, тепловой расчёт, аэродинамический расчёт, кинематика, динамика, мультителовая динамика" },
       { property: "og:title", content: "Инженерные расчёты — КБ Лидер" },
       { property: "og:description", content: "Подтверждаем работоспособность изделия численными методами." },
+      { property: "og:url", content: "/services/raschety" },
+      { property: "og:type", content: "article" },
+    ],
+    links: [{ rel: "canonical", href: "/services/raschety" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Инженерные расчёты МКЭ и CFD",
+          provider: { "@type": "Organization", name: "КБ Лидер" },
+          areaServed: "RU",
+          description: "Прочностные, тепловые, аэродинамические расчёты, кинематика и динамика.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Услуги", item: "/services" },
+            { "@type": "ListItem", position: 3, name: "Инженерные расчёты", item: "/services/raschety" },
+          ],
+        }),
+      },
     ],
   }),
 });

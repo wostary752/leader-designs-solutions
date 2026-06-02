@@ -8,10 +8,41 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
   head: () => ({
     meta: [
-      { title: "Услуги — КБ Лидер" },
-      { name: "description", content: "Конструирование, производство, инженерные расчёты и дизайн. Полный цикл разработки изделий." },
+      { title: "Услуги КБ Лидер — конструирование, расчёты, производство, дизайн" },
+      { name: "description", content: "Полный цикл инженерных услуг конструкторского бюро: разработка КД, 3D-моделирование, реверс-инжиниринг, прочностные и CFD расчёты, 3D-печать, металлоконструкции, промышленный дизайн." },
+      { name: "keywords", content: "услуги конструкторского бюро, разработка КД, 3D моделирование, реверс инжиниринг, прочностной расчёт МКЭ, CFD, металлоконструкции, 3D печать, промышленный дизайн, ЕСКД, ГОСТ" },
       { property: "og:title", content: "Услуги — КБ Лидер" },
       { property: "og:description", content: "Полный цикл инженерных услуг — от 3D-модели до серийного производства." },
+      { property: "og:url", content: "/services" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/services" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Услуги КБ Лидер",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Конструирование", url: "/services/konstruirovanie" },
+            { "@type": "ListItem", position: 2, name: "Производство", url: "/services/proizvodstvo" },
+            { "@type": "ListItem", position: 3, name: "Инженерные расчёты", url: "/services/raschety" },
+            { "@type": "ListItem", position: 4, name: "Дизайн", url: "/services/dizain" },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Услуги", item: "/services" },
+          ],
+        }),
+      },
     ],
   }),
 });

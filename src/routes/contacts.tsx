@@ -8,10 +8,49 @@ export const Route = createFileRoute("/contacts")({
   component: ContactsPage,
   head: () => ({
     meta: [
-      { title: "Контакты — КБ Лидер" },
-      { name: "description", content: "Свяжитесь с конструкторским бюро Лидер: +7 (921) 583-23-47, kb-leader@mail.ru, Санкт-Петербург." },
+      { title: "Контакты КБ Лидер — телефон, e-mail, адрес в СПб" },
+      { name: "description", content: "Связаться с конструкторским бюро Лидер: +7 (921) 583-23-47, kb-leader@mail.ru. Адрес: 196140, Санкт-Петербург, Пулковское ш., д. 80 литер А. ИНН 7810755179." },
+      { name: "keywords", content: "КБ Лидер контакты, конструкторское бюро Санкт-Петербург телефон, kb-leader@mail.ru, инженерное бюро СПб адрес, ИНН 7810755179" },
       { property: "og:title", content: "Контакты — КБ Лидер" },
-      { property: "og:description", content: "Телефон, e-mail и реквизиты конструкторского бюро." },
+      { property: "og:description", content: "Телефон, e-mail и реквизиты конструкторского бюро КБ Лидер." },
+      { property: "og:url", content: "/contacts" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/contacts" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Контакты КБ Лидер",
+          mainEntity: {
+            "@type": "Organization",
+            name: "КБ Лидер",
+            telephone: "+7-921-583-23-47",
+            email: "kb-leader@mail.ru",
+            taxID: "7810755179",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Пулковское ш., д. 80 литер А, кв. 1",
+              addressLocality: "Санкт-Петербург",
+              postalCode: "196140",
+              addressCountry: "RU",
+            },
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Контакты", item: "/contacts" },
+          ],
+        }),
+      },
     ],
   }),
 });
