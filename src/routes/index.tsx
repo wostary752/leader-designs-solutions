@@ -8,8 +8,43 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "КБ Лидер — Конструкторское бюро · Более 250 проектов" },
-      { name: "description", content: "Полный цикл инженерных услуг: конструирование, производство, расчёты, дизайн. Более 250 реализованных проектов." },
+      { title: "КБ Лидер — Конструкторское бюро в СПб · 250+ проектов" },
+      { name: "description", content: "Конструкторское бюро КБ Лидер: разработка КД, 3D-моделирование, прочностные и тепловые расчёты, производство и промышленный дизайн. 250+ реализованных проектов. Санкт-Петербург." },
+      { name: "keywords", content: "конструкторское бюро СПб, КБ Лидер, разработка КД, 3D моделирование, инженерные расчёты, МКЭ, CFD, реверс-инжиниринг, металлоконструкции, 3D печать, промышленный дизайн, ЕСКД, ГОСТ, проектирование оборудования, нестандартное оборудование" },
+      { property: "og:title", content: "КБ Лидер — Конструкторское бюро полного цикла" },
+      { property: "og:description", content: "Конструирование, расчёты, производство, дизайн. Более 250 реализованных проектов." },
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "КБ Лидер",
+          description: "Конструкторское бюро полного цикла в Санкт-Петербурге: конструирование, расчёты, производство, дизайн.",
+          telephone: "+7-921-583-23-47",
+          email: "kb-leader@mail.ru",
+          priceRange: "$$",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Пулковское ш., д. 80 литер А",
+            addressLocality: "Санкт-Петербург",
+            postalCode: "196140",
+            addressCountry: "RU",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: 59.8029, longitude: 30.2678 },
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "47" },
+          makesOffer: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Конструирование и разработка КД" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Производство и металлообработка" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Инженерные расчёты МКЭ и CFD" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Промышленный дизайн" } },
+          ],
+        }),
+      },
     ],
   }),
 });
