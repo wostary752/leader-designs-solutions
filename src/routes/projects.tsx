@@ -9,13 +9,16 @@ import img6 from "@/assets/projects/06-predskrubber.png";
 import img7 from "@/assets/projects/07-pech.png";
 import img8 from "@/assets/projects/08-fakelnaya-gorelka.png";
 import img9 from "@/assets/projects/09-kislotnyy-bak.png";
+import img10 from "@/assets/projects/10-nasos-konsolnyy.png";
+import img11 from "@/assets/projects/11-nasos-dvustoronniy.png";
+import img12 from "@/assets/projects/12-sistema-ciklonov.png";
 
 export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
   head: () => ({
     meta: [
       { title: "Проекты — КБ Лидер" },
-      { name: "description", content: "Более 250 реализованных проектов: горелки, реакторы, скрубберы, подогреватели, печи и промышленное оборудование." },
+      { name: "description", content: "Более 250 реализованных проектов: горелки, реакторы, скрубберы, подогреватели, печи, насосы и промышленное оборудование." },
       { property: "og:title", content: "Проекты — КБ Лидер" },
       { property: "og:description", content: "Более 250 завершённых инженерных проектов." },
     ],
@@ -32,6 +35,9 @@ const projects = [
   { tag: "Печь", title: "Печь", image: img7 },
   { tag: "Горелка", title: "Факельная горелка", image: img8 },
   { tag: "Ёмкости", title: "Кислотный бак", image: img9 },
+  { tag: "Насосы", title: "Насос центробежный консольного типа", image: img10 },
+  { tag: "Насосы", title: "Насос центробежный двусторонний", image: img11 },
+  { tag: "Газоочистка", title: "Система циклонов", image: img12 },
 ];
 
 const scope = [
