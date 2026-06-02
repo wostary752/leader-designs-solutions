@@ -17,10 +17,36 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
   head: () => ({
     meta: [
-      { title: "Проекты — КБ Лидер" },
-      { name: "description", content: "Более 250 реализованных проектов: горелки, реакторы, скрубберы, подогреватели, печи, насосы и промышленное оборудование." },
+      { title: "Проекты КБ Лидер — 250+ реализованных инженерных проектов" },
+      { name: "description", content: "Портфолио конструкторского бюро Лидер: горелки, реакторы, скрубберы, подогреватели, печи, насосы, циклоны и нестандартное промышленное оборудование. Более 250 завершённых проектов." },
+      { name: "keywords", content: "проекты КБ Лидер, портфолио конструкторское бюро, горелка реактор, мазутная горелка, предскруббер, подогреватель, факельная горелка, кислотный бак, насос центробежный, система циклонов, печь промышленная" },
       { property: "og:title", content: "Проекты — КБ Лидер" },
-      { property: "og:description", content: "Более 250 завершённых инженерных проектов." },
+      { property: "og:description", content: "Более 250 завершённых инженерных проектов: горелки, реакторы, скрубберы, насосы, печи." },
+      { property: "og:url", content: "/projects" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/projects" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Проекты КБ Лидер",
+          description: "Каталог реализованных инженерных проектов конструкторского бюро Лидер.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Главная", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Проекты", item: "/projects" },
+          ],
+        }),
+      },
     ],
   }),
 });
