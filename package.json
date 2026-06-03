@@ -1,12 +1,12 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "kb-leader-static-site",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "build": "vite build && node scripts/postbuild-static.mjs",
+    "build:dev": "vite build --mode development && node scripts/postbuild-static.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."
